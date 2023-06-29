@@ -7,7 +7,7 @@ async function writeToFile(rawTextArr) {
 
   for (const i in rawTextArr) {
     // Create a new directory for each day
-    fs.mkdirSync(`Day${i}`);
+    fs.mkdirSync(`DailyCodingProblem/Day${i}`);
 
     // Write the raw text to a md file
     fs.writeFile(`DailyCodingProblem/Day${i}/Day${i}Problem.md`, rawTextArr[i], { encoding: 'utf8' }, (err) => {
@@ -15,8 +15,6 @@ async function writeToFile(rawTextArr) {
         console.error(err);
         return;
       }
-
-      // console.log(`File Day${i}.txt created and data written successfully.`);
     });
 
   }
