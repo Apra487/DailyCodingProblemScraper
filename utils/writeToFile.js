@@ -1,7 +1,7 @@
 const fs = require('fs');
 const { gitCommit } = require('./git.js');
 
-async function writeToFile(rawTextArr) {
+async function writeToFile(bodyArr) {
   // ! need to refactor this ! this is hacky solution ! Need to find a way to create the directory here
   // Create a new directory named 'DailyCodingProblem'
   // fs.mkdirSync('DailyCodingProblem');
@@ -10,14 +10,14 @@ async function writeToFile(rawTextArr) {
   // const git = await gitInit();
   // console.log({git});
 
-  for (const i in rawTextArr) {
+  for (const i in bodyArr) {
     // Create a new directory for each day
     fs.mkdirSync(`DailyCodingProblem/Day${i}`);
 
     // Write the raw text to a md file
     fs.writeFile(
       `DailyCodingProblem/Day${i}/Day${i}Problem.md`,
-      rawTextArr[i],
+      bodyArr[i].txt,
       { encoding: 'utf8' },
       (err) => {
         if (err) {
@@ -27,8 +27,20 @@ async function writeToFile(rawTextArr) {
       }
     );
 
+    // Write it to a html file
+    fs.writeFile(
+      `DailyCodingProblem/Day${i}/Day${i}Problem.html`,
+      bodyArr[i].html,
+      (err) => {
+        if (err) {
+          console.error(err);
+          return;
+        }
+      }
+    );
+
     // Construct commit msg and commit the changes to git
-    await constructCommit(rawTextArr[i], i);
+    await constructCommit(bodyArr[i].txt, i);
   }
 }
 

@@ -18,16 +18,16 @@ const { getEmails } = require('./gmailApi/getEmails.js');
     );
 
     // get the raw text of each email in an array and reverse it since the latest email should at the end
-    console.log(`Retreiving rawText...`);
-    const rawTextArr = (await getMessage(auth, messageIdArr)).reverse();
+    console.log(`Retreiving Body...`);
+    const bodyArr = (await getMessage(auth, messageIdArr)).reverse();
 
     console.log(
-      `Retreiving rawText ✅. Total no of rawTextBody ---> ${rawTextArr.length}`
+      `Retreived Body ✅. Total no of rawTextBody ---> ${bodyArr.length}`
     );
 
     // write the raw text to file
     console.log(`Writing to file...`);
-    await writeToFile(rawTextArr);
+    await writeToFile(bodyArr);
     console.log(`Writing to file ✅`);
   } catch (error) {
     console.error(error);
