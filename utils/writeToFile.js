@@ -1,5 +1,5 @@
 const fs = require("fs");
-const { gitCommit } = require("./utils/git.js");
+const { gitCommit } = require("./git.js");
 
 async function writeToFile(rawTextArr) {
   // ! need to refactor this ! this is hacky solution ! Need to find a way to create the directory here

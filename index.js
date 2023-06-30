@@ -1,7 +1,7 @@
-const { getMessage } = require("./getMessage.js");
+const { getMessage } = require("./gmailApi/getMessage.js");
 const { authorize } = require("./authorize.js");
-const { writeToFile } = require("./writeToFile.js");
-const { getEmails } = require("./getEmails.js");
+const { writeToFile } = require("./utils/writeToFile.js");
+const { getEmails } = require("./gmailApi/getEmails.js");
 
 (async () => {
   try {
@@ -13,7 +13,7 @@ const { getEmails } = require("./getEmails.js");
       "from:founders@dailycodingproblem.com",
       auth
     );
-    console.log(`Retreiving emailds ✅. Total no of emails ---> ${messageIdArr.length}`);
+    console.log(`Retreiving IDs ✅. Total no of emails ---> ${messageIdArr.length}`);
 
     // get the raw text of each email in an array and reverse it since the latest email should at the end
     console.log(`Retreiving rawText...`);

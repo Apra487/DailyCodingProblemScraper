@@ -1,5 +1,5 @@
 const { google } = require("googleapis");
-const { atob } = require("./utils/atob.js");
+const { atob } = require("../utils/atob.js");
 
 async function getMessage(auth, messageIdArr) {
   const rawTextArr = [];
