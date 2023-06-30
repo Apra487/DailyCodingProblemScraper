@@ -1,18 +1,18 @@
-const { google } = require("googleapis");
+const { google } = require('googleapis');
 
 const messageIds = [];
 
 // get all the emails from the inbox
-async function getEmails(queryString, auth, token = "") {
-  const gmail = google.gmail({ version: "v1", auth });
+async function getEmails(queryString, auth, token = '') {
+  const gmail = google.gmail({ version: 'v1', auth });
   const res = await gmail.users.messages.list({
-    userId: "me",
+    userId: 'me',
     q: queryString,
     pageToken: token,
   });
   const messages = res.data.messages;
   if (!messages || messages.length === 0) {
-    console.log("No messages found.");
+    console.log('No messages found.');
     return;
   }
   messages.forEach((message) => {

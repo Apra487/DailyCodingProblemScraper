@@ -1,5 +1,5 @@
-const fs = require("fs");
-const { gitCommit } = require("./git.js");
+const fs = require('fs');
+const { gitCommit } = require('./git.js');
 
 async function writeToFile(rawTextArr) {
   // ! need to refactor this ! this is hacky solution ! Need to find a way to create the directory here
@@ -18,7 +18,7 @@ async function writeToFile(rawTextArr) {
     fs.writeFile(
       `DailyCodingProblem/Day${i}/Day${i}Problem.md`,
       rawTextArr[i],
-      { encoding: "utf8" },
+      { encoding: 'utf8' },
       (err) => {
         if (err) {
           console.error(err);
@@ -42,7 +42,7 @@ async function constructCommit(rawText, i) {
     await gitCommit(`Day ${i} Problem: ${line}`);
     console.log(line);
   } else {
-    console.log("No matching line found.");
+    console.log('No matching line found.');
     // Commit with generic message to git
     await gitCommit(`Day${i} Problem`);
   }
