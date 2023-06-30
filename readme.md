@@ -52,7 +52,7 @@ To use this Daily Coding Problem Scraper, follow the steps below:
      node index.js
      ```
 
-     **Note**: The first time you run the script, it will your browser and prompts you to authorize access to your Gmail account. **Please accept and allow the access to proceed. The script will then save the access token in a file named `token.json` in the repository's directory.** The next time you run the script, it will use the saved access token to access your Gmail account.
+     **Note**: The first time you run the script, it will open your browser and prompts you to authorize access to your Gmail account. **Please accept and allow the access to proceed. The script will then save the access token in a file named `token.json` in the repository's directory.** The next time you run the script, it will use the saved access token to access your Gmail account.
 
    - The script will retrieve the emails matching the search query given in the code, extract the problem content, and save it as HTML and Markdown files in the `DailyCodingProblem` directory.
    - The scraped files will be automatically committed to the Git repository.
