@@ -20,6 +20,7 @@ const { getEmails } = require('./gmailApi/getEmails.js');
     // get the raw text of each email in an array and reverse it since the latest email should at the end
     console.log(`Retreiving rawText...`);
     const rawTextArr = (await getMessage(auth, messageIdArr)).reverse();
+
     console.log(
       `Retreiving rawText ✅. Total no of rawTextBody ---> ${rawTextArr.length}`
     );
