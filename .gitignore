@@ -4,4 +4,5 @@ client_secret_768700720157-fboeuc22s333mit6697l0etfrdvss49k.apps.googleuserconte
 scrape-daily-coding-problem-b852e468adfe.json
 node_modules
 .DS_Store
+.env
 DailyCodingProblem

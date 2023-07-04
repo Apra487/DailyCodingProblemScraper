@@ -2,6 +2,7 @@ const { getMessage } = require('./gmailApi/getMessage.js');
 const { authorize } = require('./authorize.js');
 const { writeToFile } = require('./utils/writeToFile.js');
 const { getEmails } = require('./gmailApi/getEmails.js');
+require('dotenv').config();
 
 (async () => {
   try {
@@ -10,7 +11,7 @@ const { getEmails } = require('./gmailApi/getEmails.js');
 
     console.log(`Retreiving the IDs...`);
     const messageIdArr = await getEmails(
-      'from:founders@dailycodingproblem.com',
+      `from:${process.env.FROM_EMAIL}`,
       auth
     );
     console.log(
