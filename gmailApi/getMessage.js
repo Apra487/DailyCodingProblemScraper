@@ -9,18 +9,29 @@ async function getMessage(auth, messageIdArr) {
     const res = await gmail.users.messages.get({
       userId: 'me',
       id: messageIdArr[i],
+      metadataHeaders: ['Subject'],
     });
 
-    if (res?.data?.payload?.parts[0]?.body?.data) {
-      const rawText = atob(res?.data?.payload?.parts[0]?.body?.data);
+    const subject = res.data.payload.headers.find(
+      (header) => header.name === 'Subject'
+    ).value;
 
-      const html = atob(res?.data?.payload?.parts[1]?.body?.data);
+    if (res?.data?.payload?.parts) {
+      console.log(res.data.payload?.parts);
+      const rawText = atob(
+        res.data.payload?.parts?.find((part) => part.mimeType === 'text/plain')
+          .body.data
+      );
+      const html = atob(
+        res.data.payload?.parts?.find((part) => part.mimeType === 'text/html')
+          .body.data
+      );
+      console.log({ html });
 
-      // remove the last part of the rawText which is the boilerplate and promotional text
       const formatTxt = rawText.split(
         '--------------------------------------------------------------------------------'
       )[0];
-      data.push({ html, txt: formatTxt });
+      data.push({ html, txt: formatTxt, subject });
     }
   }
   return data;
