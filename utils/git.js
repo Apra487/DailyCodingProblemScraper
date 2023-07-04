@@ -22,7 +22,9 @@ async function gitCommit(commitMsg) {
   try {
     await git.add('./*');
     await git.commit(commitMsg);
+    console.log(`Committed with message: ${commitMsg}`);
     await git.push('origin', 'main');
+    console.log(`Pushed to remote. ✅`);
   } catch (e) {
     console.error(e);
   }

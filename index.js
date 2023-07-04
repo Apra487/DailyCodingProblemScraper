@@ -29,7 +29,7 @@ require('dotenv').config();
     // write the raw text to file
     console.log(`Writing to file...`);
     await writeToFile(bodyArr);
-    console.log(`Writing to file ✅`);
+    console.log(`Written to file ✅`);
   } catch (error) {
     console.error(error);
   }

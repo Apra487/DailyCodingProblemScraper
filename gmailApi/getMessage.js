@@ -17,7 +17,6 @@ async function getMessage(auth, messageIdArr) {
     ).value;
 
     if (res?.data?.payload?.parts) {
-      console.log(res.data.payload?.parts);
       const rawText = atob(
         res.data.payload?.parts?.find((part) => part.mimeType === 'text/plain')
           .body.data
@@ -26,7 +25,6 @@ async function getMessage(auth, messageIdArr) {
         res.data.payload?.parts?.find((part) => part.mimeType === 'text/html')
           .body.data
       );
-      console.log({ html });
 
       const formatTxt = rawText.split(
         '--------------------------------------------------------------------------------'
