@@ -12,11 +12,11 @@ async function writeToFile(bodyArr) {
 
   for (const i in bodyArr) {
     // Create a new directory for each day
-    fs.mkdirSync(`DailyCodingProblem/Day${i}`);
+    fs.mkdirSync(`DailyCodingProblem/Day ${i}`);
 
     // Write the raw text to a md file
     fs.writeFile(
-      `DailyCodingProblem/Day${i}/Day${i}Problem.md`,
+      `DailyCodingProblem/Day ${i}/Day${i}Problem.md`,
       bodyArr[i].txt,
       { encoding: 'utf8' },
       (err) => {
@@ -29,7 +29,7 @@ async function writeToFile(bodyArr) {
 
     // Write it to a html file
     fs.writeFile(
-      `DailyCodingProblem/Day${i}/Day${i}Problem.html`,
+      `DailyCodingProblem/Day ${i}/Day${i}Problem.html`,
       bodyArr[i].html,
       (err) => {
         if (err) {
@@ -40,24 +40,27 @@ async function writeToFile(bodyArr) {
     );
 
     // Construct commit msg and commit the changes to git
-    await constructCommit(bodyArr[i].txt, i);
+    await constructCommit(bodyArr[i].txt, i, bodyArr[i]);
   }
 }
 
-async function constructCommit(rawText, i) {
+async function constructCommit(rawText, i, data) {
   // regex to retrive 'This problem was asked by ...'
-  const regex = /^This problem was[^.]*\./m;
-  const match = rawText.match(regex);
+  // const regex = /^This problem was[^.]*\./m;
+  // const match = rawText.match(regex);
 
-  if (match) {
-    const line = match[0];
-    await gitCommit(`Day ${i} Problem: ${line}`);
-    console.log(line);
-  } else {
-    console.log('No matching line found.');
-    // Commit with generic message to git
-    await gitCommit(`Day${i} Problem`);
-  }
+  // if (match) {
+  //   const line = match[0];
+  //   await gitCommit(`Day ${i} Problem: ${line}`);
+  //   console.log(line);
+  // } else {
+  //   console.log('No matching line found.');
+  //   // Commit with generic message to git
+  //   await gitCommit(`Day${i} Problem`);
+  // }
+
+  // Commit with generic message to git
+  await gitCommit(data.subject);
 }
 
 exports.writeToFile = writeToFile;
