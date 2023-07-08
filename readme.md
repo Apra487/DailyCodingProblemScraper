@@ -17,7 +17,10 @@ To address the problem of losing track of the coding problems from the "Daily Co
 3.  Store the content as HTML and Markdown files locally on my computer.
 4.  Commit the files to a Git repository, ensuring I have a record of all the coding problems.
 
-The solution allows you to stay organized and maintain a history of all the problems you receive, making it easier for you to revisit them and solve them when you find the time.
+**Note:** This solution allows you to stay organized and maintain a history of all the Daily Coding Problem emails that are already in your inbox.
+
+If you want to get new daily coding problem emails in your GitHub in realtime. Please go to my other repository 👉 [DCP-Mail-To-Github-In-Realtime](https://github.com/Apra487/DCP-Mail-To-Github-In-Realtime).
+
 <br></br>
 
 ## Installation
